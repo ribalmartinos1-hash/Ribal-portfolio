@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ribal Martinos — Videographer · Photographer · Editor</title>
+  <meta name="description" content="Ribal Martinos — cinematic videography, photography and video editing. Stories built frame by frame." />
+  <meta property="og:title" content="Ribal Martinos — Visual Storyteller" />
+  <meta property="og:description" content="Cinematic videography, photography and editing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ══════════ PRELOADER ══════════ -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__inner">
+      <span class="preloader__name">RIBAL&nbsp;MARTINOS</span>
+      <span class="preloader__pct" id="preloaderPct">0%</span>
+      <div class="preloader__bar"><div class="preloader__fill" id="preloaderFill"></div></div>
+    </div>
+  </div>
+
+  <!-- ══════════ GRAIN + CURSOR ══════════ -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <!-- ══════════ NAV ══════════ -->
+  <header class="nav">
+    <a class="nav__logo" href="#top">RM<span class="nav__dot">.</span></a>
+    <nav class="nav__links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="nav__cta magnetic" href="#contact">Let's talk</a>
+  </header>
+
+  <!-- ══════════ HERO — SCROLL-DRIVEN EXPLODED CAMERA ══════════ -->
+  <section class="hero" id="top">
+    <div class="hero__pin" id="heroPin">
+      <canvas id="seqCanvas" class="hero__canvas"></canvas>
+      <div class="hero__vignette" aria-hidden="true"></div>
+
+      <!-- act 1 : name -->
+      <div class="hero__act hero__act--1" id="act1">
+        <p class="hero__kicker">Videographer · Photographer · Editor</p>
+        <h1 class="hero__title">
+          <span class="hero__line"><span>RIBAL</span></span>
+          <span class="hero__line"><span>MARTINOS</span></span>
+        </h1>
+        <p class="hero__scrollhint">Scroll to disassemble<span class="hero__scrollbar"></span></p>
+      </div>
+
+      <!-- act 2 : statement -->
+      <div class="hero__act hero__act--2" id="act2">
+        <h2 class="hero__big">EVERY STORY<br/>HAS ITS PARTS</h2>
+      </div>
+
+      <!-- act 3 : statement -->
+      <div class="hero__act hero__act--3" id="act3">
+        <h2 class="hero__big">I PUT THEM<br/>BACK TOGETHER</h2>
+        <p class="hero__sub">Frame by frame. Cut by cut.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ MARQUEE ══════════ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track" id="marqueeTrack">
+      <span>VIDEOGRAPHY&ensp;—&ensp;PHOTOGRAPHY&ensp;—&ensp;EDITING&ensp;—&ensp;COLOR&ensp;—&ensp;DIRECTION&ensp;—&ensp;</span>
+      <span>VIDEOGRAPHY&ensp;—&ensp;PHOTOGRAPHY&ensp;—&ensp;EDITING&ensp;—&ensp;COLOR&ensp;—&ensp;DIRECTION&ensp;—&ensp;</span>
+    </div>
+  </div>
+
+  <!-- ══════════ ABOUT ══════════ -->
+  <section class="about" id="about">
+    <p class="about__eyebrow reveal">// About</p>
+    <p class="about__text reveal">
+      I'm <em>Ribal Martinos</em> — a visual storyteller obsessed with the moment
+      just before everything comes together. Weddings, brands, music, events:
+      I shoot it, I frame it, I cut it until it <em>feels</em> right.
+    </p>
+    <div class="about__stats">
+      <div class="stat reveal"><span class="stat__num" data-count="120">0</span><span class="stat__label">Projects delivered</span></div>
+      <div class="stat reveal"><span class="stat__num" data-count="6">0</span><span class="stat__label">Years behind the lens</span></div>
+      <div class="stat reveal"><span class="stat__num" data-count="40">0</span><span class="stat__label">Happy clients</span></div>
+    </div>
+  </section>
+
+  <!-- ══════════ SELECTED WORK ══════════ -->
+  <section class="work" id="work">
+    <div class="work__head">
+      <h2 class="work__title reveal">SELECTED<br/>WORK</h2>
+      <p class="work__note reveal">Hover to preview — full films on request.</p>
+    </div>
+
+    <!--
+      ▼▼ SWAP ZONE ▼▼
+      To add your real work: replace each .card__media inner content with
+      <video muted loop playsinline preload="metadata" src="assets/work/yourfile.mp4"></video>
+      or <img src="assets/work/yourphoto.jpg" alt="...">
+      Keep the .card structure. Add poster images for performance.
+    -->
+    <div class="work__grid">
+      <a class="card reveal" href="#contact" data-cat="Wedding Film">
+        <div class="card__media card__media--a"><span class="card__ph">01</span></div>
+        <div class="card__meta"><h3>Golden Hour Vows</h3><span>Wedding Film</span></div>
+      </a>
+      <a class="card reveal" href="#contact" data-cat="Commercial">
+        <div class="card__media card__media--b"><span class="card__ph">02</span></div>
+        <div class="card__meta"><h3>Product in Motion</h3><span>Commercial</span></div>
+      </a>
+      <a class="card reveal" href="#contact" data-cat="Music Video">
+        <div class="card__media card__media--c"><span class="card__ph">03</span></div>
+        <div class="card__meta"><h3>Midnight Frequencies</h3><span>Music Video</span></div>
+      </a>
+      <a class="card reveal" href="#contact" data-cat="Event">
+        <div class="card__media card__media--d"><span class="card__ph">04</span></div>
+        <div class="card__meta"><h3>Festival Aftermovie</h3><span>Event Coverage</span></div>
+      </a>
+      <a class="card reveal" href="#contact" data-cat="Photography">
+        <div class="card__media card__media--e"><span class="card__ph">05</span></div>
+        <div class="card__meta"><h3>Portrait Series</h3><span>Photography</span></div>
+      </a>
+      <a class="card reveal" href="#contact" data-cat="Brand">
+        <div class="card__media card__media--f"><span class="card__ph">06</span></div>
+        <div class="card__meta"><h3>Brand Story</h3><span>Brand Content</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════ SERVICES ══════════ -->
+  <section class="services" id="services">
+    <p class="about__eyebrow reveal">// What I do</p>
+    <div class="service reveal">
+      <span class="service__idx">01</span>
+      <h3 class="service__name">VIDEOGRAPHY</h3>
+      <p class="service__desc">Weddings, events, commercials & music videos — shot cinematic, always.</p>
+    </div>
+    <div class="service reveal">
+      <span class="service__idx">02</span>
+      <h3 class="service__name">PHOTOGRAPHY</h3>
+      <p class="service__desc">Portraits, products and moments that don't get a second take.</p>
+    </div>
+    <div class="service reveal">
+      <span class="service__idx">03</span>
+      <h3 class="service__name">VIDEO EDITING</h3>
+      <p class="service__desc">Cutting, grading, sound design — where raw footage becomes a film.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ CONTACT CTA ══════════ -->
+  <section class="contact" id="contact">
+    <p class="contact__eyebrow reveal">// Got a story to tell?</p>
+    <a class="contact__mail reveal magnetic" href="mailto:ribalmartinos1@gmail.com">
+      <span class="contact__mailtext">LET'S&nbsp;MAKE<br/>IT&nbsp;MOVE</span>
+    </a>
+    <p class="contact__email reveal">ribalmartinos1@gmail.com</p>
+    <div class="contact__row reveal">
+      <!-- ▼ replace YOUR_HANDLE and YOUR_NUMBER (intl format, no +) -->
+      <a class="pill magnetic" href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener">Instagram ↗</a>
+      <a class="pill magnetic" href="https://wa.me/YOUR_NUMBER" target="_blank" rel="noopener">WhatsApp ↗</a>
+      <a class="pill magnetic" href="mailto:ribalmartinos1@gmail.com">Email ↗</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Ribal Martinos</span>
+    <span>Shot · Framed · Cut</span>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
