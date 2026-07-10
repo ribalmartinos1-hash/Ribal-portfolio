@@ -50,6 +50,24 @@ Put the media files in `assets/work/`. Keep clips short (5–10 s, ~720p) so the
 - **About principles**: edit the three `.principle` cards in `index.html` as your track record grows.
 - **Accent color**: `--accent` in `css/style.css`.
 
+## Client deliveries
+
+Clients get their projects at `delivery.html?c=THEIR-CODE` — a branded page with a
+button to their Google Photos album. To add a client, edit `js/clients.js`:
+
+```js
+"sara-june2026": {
+  name: "Sara & Omar",
+  project: "Wedding Film",
+  album: "https://photos.app.goo.gl/xxxxxxxx"
+}
+```
+
+Then send them `https://YOUR-DOMAIN/delivery.html?c=sara-june2026` on WhatsApp.
+Codes should be lowercase with dashes. Note: album links are readable in the page
+source, so rely on Google Photos' own unguessable links — don't put anything
+truly private there.
+
 ## Structure
 
 ```

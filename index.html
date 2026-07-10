@@ -29,7 +29,7 @@
 
   <!-- ══════════ NAV ══════════ -->
   <header class="nav">
-    <a class="nav__logo" href="#top">RM<span class="nav__dot">.</span></a>
+    <a class="nav__logo" href="#" id="menuBtn" aria-label="Open menu">RM<span class="nav__dot">.</span></a>
     <nav class="nav__links">
       <a href="#work">Work</a>
       <a href="#services">Services</a>
@@ -37,6 +37,24 @@
     </nav>
     <a class="nav__cta magnetic" href="#contact">Let's talk</a>
   </header>
+
+  <!-- ══════════ FULLSCREEN MENU (opens from RM.) ══════════ -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <button class="menu__close" id="menuClose" aria-label="Close menu">✕</button>
+    <nav class="menu__links">
+      <a href="index.html#top"><span>01</span>Home</a>
+      <a href="index.html#about"><span>02</span>About</a>
+      <a href="index.html#work"><span>03</span>Selected Work</a>
+      <a href="index.html#services"><span>04</span>Services</a>
+      <a href="delivery.html"><span>05</span>Client Area</a>
+      <a href="index.html#contact"><span>06</span>Contact</a>
+    </nav>
+    <div class="menu__foot">
+      <a href="https://www.instagram.com/ribal_martinos" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/96171316591" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:ribalmartinos1@gmail.com">Email</a>
+    </div>
+  </div>
 
   <!-- ══════════ STAGE — VIDEO RUNS BEHIND EVERYTHING UNTIL "SELECTED WORK" ══════════ -->
   <section class="stage" id="top">
@@ -164,24 +182,4 @@
   <section class="contact" id="contact">
     <p class="contact__eyebrow reveal">// Got a story to tell?</p>
     <a class="contact__mail reveal magnetic" href="mailto:ribalmartinos1@gmail.com">
-      <span class="contact__mailtext">LET'S&nbsp;MAKE<br/>IT&nbsp;MOVE</span>
-    </a>
-    <p class="contact__email reveal">ribalmartinos1@gmail.com</p>
-    <p class="contact__location reveal">Based in Lebanon — available worldwide</p>
-    <div class="contact__row reveal">
-      <a class="pill magnetic" href="https://www.instagram.com/ribal_martinos" target="_blank" rel="noopener">Instagram ↗</a>
-      <a class="pill magnetic" href="https://wa.me/96171316591" target="_blank" rel="noopener">WhatsApp ↗</a>
-      <a class="pill magnetic" href="mailto:ribalmartinos1@gmail.com">Email ↗</a>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <span>© <span id="year"></span> Ribal Martinos — Lebanon</span>
-    <span>Shot · Framed · Cut</span>
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="js/main.js"></script>
-</body>
-</html>
+      <span class="contact__mailtext">L

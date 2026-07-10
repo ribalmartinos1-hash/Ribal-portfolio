@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Client Area — Ribal Martinos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="plain-cursor">
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ══════════ NAV ══════════ -->
+  <header class="nav">
+    <a class="nav__logo" href="#" id="menuBtn" aria-label="Open menu">RM<span class="nav__dot">.</span></a>
+    <nav class="nav__links">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#about">About</a>
+    </nav>
+    <a class="nav__cta" href="index.html#contact">Let's talk</a>
+  </header>
+
+  <!-- ══════════ FULLSCREEN MENU ══════════ -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <button class="menu__close" id="menuClose" aria-label="Close menu">✕</button>
+    <nav class="menu__links">
+      <a href="index.html#top"><span>01</span>Home</a>
+      <a href="index.html#about"><span>02</span>About</a>
+      <a href="index.html#work"><span>03</span>Selected Work</a>
+      <a href="index.html#services"><span>04</span>Services</a>
+      <a href="delivery.html"><span>05</span>Client Area</a>
+      <a href="index.html#contact"><span>06</span>Contact</a>
+    </nav>
+    <div class="menu__foot">
+      <a href="https://www.instagram.com/ribal_martinos" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/96171316591" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:ribalmartinos1@gmail.com">Email</a>
+    </div>
+  </div>
+
+  <!-- ══════════ CLIENT DELIVERY ══════════ -->
+  <main class="delivery">
+
+    <!-- shown when the link has a valid code -->
+    <section class="delivery__panel" id="deliveryReady" hidden>
+      <p class="delivery__eyebrow">// Your delivery</p>
+      <h1 class="delivery__title">IT'S<br/>READY</h1>
+      <p class="delivery__for">Prepared for <em id="clientName"></em><span id="clientProject"></span></p>
+      <a class="delivery__btn" id="albumBtn" href="#" target="_blank" rel="noopener">Open your album ↗</a>
+      <p class="delivery__hint">Save your favorites to your device — and if anything's missing,
+        <a href="https://wa.me/96171316591" target="_blank" rel="noopener">message me</a>.</p>
+    </section>
+
+    <!-- shown when there's no code / wrong code -->
+    <section class="delivery__panel" id="deliveryAsk" hidden>
+      <p class="delivery__eyebrow">// Client Area</p>
+      <h1 class="delivery__title">CLIENT<br/>AREA</h1>
+      <p class="delivery__for">Enter the code I sent you on WhatsApp</p>
+      <form class="delivery__form" id="codeForm">
+        <input id="codeInput" type="text" placeholder="your-code" autocomplete="off" spellcheck="false" />
+        <button type="submit">Open →</button>
+      </form>
+      <p class="delivery__error" id="codeError" hidden>That code wasn't found — double-check it, or
+        <a href="https://wa.me/96171316591" target="_blank" rel="noopener">message me</a>.</p>
+    </section>
+
+    <p class="delivery__back"><a href="index.html#work">← See the latest work</a></p>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Ribal Martinos — Lebanon</span>
+    <span>Shot · Framed · Cut</span>
+  </footer>
+
+  <script src="js/clients.js"></script>
+  <script src="js/delivery.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>
