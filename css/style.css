@@ -344,6 +344,10 @@ a { color: inherit; text-decoration: none; }
   -webkit-text-stroke: 2px var(--ink);
 }
 .contact__email { margin-top: 2.2rem; color: var(--muted); letter-spacing: .12em; }
+.contact__location {
+  margin-top: .6rem; color: var(--muted);
+  font-size: .78rem; letter-spacing: .25em; text-transform: uppercase;
+}
 .contact__row { display: flex; gap: 1rem; margin-top: 2.6rem; flex-wrap: wrap; justify-content: center; }
 .pill {
   border: 1px solid #3a3a40; border-radius: 99px;
