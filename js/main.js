@@ -24,15 +24,22 @@ function sizeCanvas() {
   render();
 }
 
-/* draw current frame, cover-fit */
+/* camera drift applied after the disassembly (keeps the ending alive) */
+const drift = { zoom: 1, x: 0, y: 0, rot: 0 };
+
+/* draw current frame, cover-fit + drift transform */
 function render() {
   const img = images[Math.round(seq.frame)];
   if (!img || !img.complete || !img.naturalWidth) return;
   const cw = canvas.width, ch = canvas.height;
-  const scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
+  const scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight) * drift.zoom;
   const w = img.naturalWidth * scale, h = img.naturalHeight * scale;
   ctx.clearRect(0, 0, cw, ch);
-  ctx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
+  ctx.save();
+  ctx.translate(cw / 2 + drift.x * cw, ch / 2 + drift.y * ch);
+  ctx.rotate(drift.rot);
+  ctx.drawImage(img, -w / 2, -h / 2, w, h);
+  ctx.restore();
 }
 
 /* ── preloader ──────────────────────────── */
@@ -90,46 +97,56 @@ function introAnimation() {
   });
 }
 
-/* ── the film: scrubs across hero AND about ─ */
+/* ── the film: disassembly in the hero, drift behind About ─ */
 function heroScrub() {
-  // frames map to the entire stage (pinned hero + about scrolling over it),
-  // so the camera finishes exploding right before "Selected Work"
+  // full 192-frame disassembly completes inside the pinned hero
   gsap.to(seq, {
     frame: FRAME_COUNT - 1,
     snap: "frame",
     ease: "none",
     onUpdate: render,
     scrollTrigger: {
-      trigger: ".stage",
-      start: "top top",
-      end: "bottom bottom",
-      scrub: reduceMotion ? false : 0.5,
-      invalidateOnRefresh: true
-    }
-  });
-
-  // choreograph the three text acts across the pinned hero
-  const acts = gsap.timeline({
-    scrollTrigger: {
       trigger: "#heroPin",
       start: "top top",
-      end: "+=350%",          // 3.5 screens pinned before about arrives
-      scrub: true,
+      end: "+=300%",          // 3 screens of pure visual disassembly
+      scrub: reduceMotion ? false : 0.5,
       pin: true,
       anticipatePin: 1
     }
   });
 
-  acts
-    // act 1 fades up & away
-    .to("#act1", { opacity: 0, y: -80, ease: "none", duration: 18 }, 8)
-    // act 2 in…
-    .fromTo("#act2", { opacity: 0, y: 60 }, { opacity: 1, y: 0, ease: "none", duration: 14 }, 30)
-    // …and out
-    .to("#act2", { opacity: 0, y: -60, ease: "none", duration: 12 }, 52)
-    // act 3 in and holds to the end
-    .fromTo("#act3", { opacity: 0, y: 60 }, { opacity: 1, y: 0, ease: "none", duration: 14 }, 70)
-    .to("#act3", { opacity: 1, duration: 16 }, 84);
+  // the name fades away early, then the film plays clean — no words
+  gsap.to("#act1", {
+    opacity: 0,
+    y: -80,
+    ease: "none",
+    scrollTrigger: {
+      trigger: "#heroPin",
+      start: "top top",
+      end: "+=70%",
+      scrub: true
+    }
+  });
+
+  // behind About: the exploded camera keeps moving —
+  // slow zoom, sideways pan and a gentle rotation, so it never freezes
+  if (!reduceMotion) {
+    gsap.to(drift, {
+      zoom: 1.16,
+      x: -0.07,
+      y: 0.025,
+      rot: -0.055,            // ≈ -3.2°
+      ease: "none",
+      onUpdate: render,
+      scrollTrigger: {
+        trigger: ".about",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 0.5,
+        invalidateOnRefresh: true
+      }
+    });
+  }
 }
 
 /* ── generic reveals ────────────────────── */
