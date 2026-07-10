@@ -38,12 +38,17 @@
     <a class="nav__cta magnetic" href="#contact">Let's talk</a>
   </header>
 
-  <!-- ══════════ HERO — SCROLL-DRIVEN EXPLODED CAMERA ══════════ -->
-  <section class="hero" id="top">
-    <div class="hero__pin" id="heroPin">
-      <canvas id="seqCanvas" class="hero__canvas"></canvas>
-      <div class="hero__vignette" aria-hidden="true"></div>
+  <!-- ══════════ STAGE — VIDEO RUNS BEHIND EVERYTHING UNTIL "SELECTED WORK" ══════════ -->
+  <section class="stage" id="top">
 
+    <!-- sticky film backdrop -->
+    <div class="stage__bg" aria-hidden="true">
+      <canvas id="seqCanvas" class="stage__canvas"></canvas>
+      <div class="stage__vignette"></div>
+    </div>
+
+    <div class="stage__content">
+    <div class="hero__pin" id="heroPin">
       <!-- act 1 : name -->
       <div class="hero__act hero__act--1" id="act1">
         <p class="hero__kicker">Videographer · Photographer · Editor</p>
@@ -65,7 +70,35 @@
         <p class="hero__sub">Frame by frame. Cut by cut.</p>
       </div>
     </div>
-  </section>
+
+    <!-- ══════════ ABOUT — scrolls over the film ══════════ -->
+    <section class="about" id="about">
+      <p class="about__eyebrow reveal">// About</p>
+      <p class="about__text reveal">
+        I'm <em>Ribal Martinos</em> — a visual storyteller at the very start
+        of the road, and all the hungrier for it. Weddings, brands, music,
+        events: I shoot it, I frame it, I cut it until it <em>feels</em> right.
+      </p>
+      <div class="principles">
+        <div class="principle reveal">
+          <span class="principle__idx">01</span>
+          <h3 class="principle__name">Full attention</h3>
+          <p class="principle__desc">I take on a few projects at a time — yours is never one of fifty.</p>
+        </div>
+        <div class="principle reveal">
+          <span class="principle__idx">02</span>
+          <h3 class="principle__name">Current eye</h3>
+          <p class="principle__desc">Trained on today's pace and style. Edits that feel now, not 2015.</p>
+        </div>
+        <div class="principle reveal">
+          <span class="principle__idx">03</span>
+          <h3 class="principle__name">All in</h3>
+          <p class="principle__desc">Six months in and completely obsessed. Every frame gets fought for.</p>
+        </div>
+      </div>
+    </section>
+    </div><!-- /stage__content -->
+  </section><!-- /stage -->
 
   <!-- ══════════ MARQUEE ══════════ -->
   <div class="marquee" aria-hidden="true">
@@ -74,21 +107,6 @@
       <span>VIDEOGRAPHY&ensp;—&ensp;PHOTOGRAPHY&ensp;—&ensp;EDITING&ensp;—&ensp;COLOR&ensp;—&ensp;DIRECTION&ensp;—&ensp;</span>
     </div>
   </div>
-
-  <!-- ══════════ ABOUT ══════════ -->
-  <section class="about" id="about">
-    <p class="about__eyebrow reveal">// About</p>
-    <p class="about__text reveal">
-      I'm <em>Ribal Martinos</em> — a visual storyteller obsessed with the moment
-      just before everything comes together. Weddings, brands, music, events:
-      I shoot it, I frame it, I cut it until it <em>feels</em> right.
-    </p>
-    <div class="about__stats">
-      <div class="stat reveal"><span class="stat__num" data-count="120">0</span><span class="stat__label">Projects delivered</span></div>
-      <div class="stat reveal"><span class="stat__num" data-count="6">0</span><span class="stat__label">Years behind the lens</span></div>
-      <div class="stat reveal"><span class="stat__num" data-count="40">0</span><span class="stat__label">Happy clients</span></div>
-    </div>
-  </section>
 
   <!-- ══════════ SELECTED WORK ══════════ -->
   <section class="work" id="work">

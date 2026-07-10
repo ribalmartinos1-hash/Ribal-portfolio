@@ -1,7 +1,8 @@
 # Ribal Martinos — Portfolio
 
 Cinematic scroll-driven portfolio. Dark, huge typography, and a hero where an
-exploded-view camera disassembles as you scroll (120-frame canvas scrub, GSAP ScrollTrigger).
+exploded-view camera disassembles as you scroll (192-frame canvas scrub, GSAP ScrollTrigger).
+The film runs behind the whole opening — hero and About — and completes right before Selected Work.
 
 ## Run locally
 
@@ -46,7 +47,7 @@ Put the media files in `assets/work/`. Keep clips short (5–10 s, ~720p) so the
 ## Personalize
 
 - **Instagram / WhatsApp**: in `index.html` contact section, replace `YOUR_HANDLE` and `YOUR_NUMBER` (international format, no `+`).
-- **Stats**: `data-count` values in the About section.
+- **About principles**: edit the three `.principle` cards in `index.html` as your track record grows.
 - **Accent color**: `--accent` in `css/style.css`.
 
 ## Structure
@@ -55,6 +56,6 @@ Put the media files in `assets/work/`. Keep clips short (5–10 s, ~720p) so the
 index.html          page
 css/style.css       all styling
 js/main.js          scroll engine (GSAP + canvas frame scrub)
-assets/frames/      120 webp frames of the exploding camera
+assets/frames/      192 webp frames of the exploding camera
 assets/work/        (create this) your real videos/photos
 ```

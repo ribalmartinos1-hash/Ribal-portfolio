@@ -100,24 +100,34 @@ a { color: inherit; text-decoration: none; }
 .nav__cta:hover { background: var(--ink); color: var(--bg); }
 @media (max-width: 640px) { .nav__links { display: none; } }
 
-/* ── hero / pinned sequence ────────────── */
-.hero { position: relative; }
-.hero__pin {
-  position: relative;
+/* ── stage: sticky film behind hero + about ── */
+.stage { position: relative; }
+.stage__bg {
+  position: sticky; top: 0;
   height: 100vh; height: 100svh;
   overflow: hidden;
+  z-index: 0;
 }
-.hero__canvas {
+.stage__canvas {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   display: block;
 }
-.hero__vignette {
+.stage__vignette {
   position: absolute; inset: 0;
   background:
     radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,.55) 100%),
-    linear-gradient(to bottom, rgba(10,10,11,.35), transparent 22%, transparent 75%, rgba(10,10,11,.85));
+    linear-gradient(to bottom, rgba(10,10,11,.35), transparent 22%, transparent 80%, rgba(10,10,11,.7));
   pointer-events: none;
+}
+.stage__content {
+  position: relative; z-index: 1;
+  margin-top: -100vh; margin-top: -100svh;   /* pull content up over the sticky film */
+}
+.hero__pin {
+  position: relative;
+  height: 100vh; height: 100svh;
+  overflow: hidden;
 }
 
 .hero__act {
@@ -197,10 +207,16 @@ a { color: inherit; text-decoration: none; }
 /* ── shared reveal ─────────────────────── */
 .reveal { opacity: 0; transform: translateY(48px); }
 
-/* ── about ─────────────────────────────── */
+/* ── about — floats over the film ──────── */
 .about {
-  padding: clamp(6rem, 14vh, 10rem) clamp(1.2rem, 6vw, 6rem);
+  padding: clamp(7rem, 18vh, 12rem) clamp(1.2rem, 6vw, 6rem) clamp(8rem, 20vh, 13rem);
   max-width: 1200px; margin: 0 auto;
+  /* readable over the exploded camera, fades dark toward the marquee */
+  background: linear-gradient(to bottom,
+    transparent,
+    rgba(10,10,11,.42) 22%,
+    rgba(10,10,11,.66) 55%,
+    var(--bg) 100%);
 }
 .about__eyebrow {
   color: var(--accent);
@@ -211,19 +227,35 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(1.5rem, 3.6vw, 2.8rem);
   line-height: 1.35; font-weight: 300;
   max-width: 20em;
+  text-shadow: 0 2px 24px rgba(0,0,0,.85), 0 0 60px rgba(0,0,0,.6);
 }
 .about__text em { font-style: normal; color: var(--accent); }
-.about__stats {
-  display: flex; gap: clamp(2rem, 8vw, 6rem);
-  margin-top: 4.5rem; flex-wrap: wrap;
+
+/* three honest principles instead of inflated stats */
+.principles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 1.2rem;
+  margin-top: 4.5rem;
 }
-.stat__num {
+.principle {
+  padding: 1.6rem 1.5rem 1.8rem;
+  border: 1px solid rgba(242,240,236,.14);
+  border-radius: 6px;
+  background: rgba(10,10,11,.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color .35s, transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.principle:hover { border-color: rgba(230,51,37,.6); transform: translateY(-4px); }
+.principle__idx { color: var(--accent); font-size: .75rem; letter-spacing: .25em; }
+.principle__name {
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 6vw, 4.5rem);
-  display: block;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  text-transform: uppercase;
+  margin: .7rem 0 .6rem;
 }
-.stat__num::after { content: "+"; color: var(--accent); }
-.stat__label { color: var(--muted); font-size: .8rem; letter-spacing: .15em; text-transform: uppercase; }
+.principle__desc { color: var(--muted); font-size: .95rem; line-height: 1.6; }
 
 /* ── work ──────────────────────────────── */
 .work { padding: clamp(5rem, 12vh, 9rem) clamp(1.2rem, 4vw, 3rem); }

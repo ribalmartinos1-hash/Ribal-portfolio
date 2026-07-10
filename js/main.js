@@ -6,7 +6,7 @@
 gsap.registerPlugin(ScrollTrigger);
 
 /* ── config ─────────────────────────────── */
-const FRAME_COUNT = 120;
+const FRAME_COUNT = 192;
 const FRAME_PATH = i => `assets/frames/frame_${String(i + 1).padStart(3, "0")}.webp`;
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -72,7 +72,6 @@ function start() {
   introAnimation();
   heroScrub();
   sectionReveals();
-  counters();
 }
 
 /* ── intro: name rises out of its mask ──── */
@@ -91,31 +90,33 @@ function introAnimation() {
   });
 }
 
-/* ── hero: pinned, scroll scrubs the film ─ */
+/* ── the film: scrubs across hero AND about ─ */
 function heroScrub() {
-  // frame scrubbing across the whole pinned distance
+  // frames map to the entire stage (pinned hero + about scrolling over it),
+  // so the camera finishes exploding right before "Selected Work"
   gsap.to(seq, {
     frame: FRAME_COUNT - 1,
     snap: "frame",
     ease: "none",
     onUpdate: render,
     scrollTrigger: {
-      trigger: "#heroPin",
+      trigger: ".stage",
       start: "top top",
-      end: "+=400%",          // 4 screens of scroll = full disassembly
+      end: "bottom bottom",
       scrub: reduceMotion ? false : 0.5,
-      pin: true,
-      anticipatePin: 1
+      invalidateOnRefresh: true
     }
   });
 
-  // choreograph the three text acts along the same distance
+  // choreograph the three text acts across the pinned hero
   const acts = gsap.timeline({
     scrollTrigger: {
       trigger: "#heroPin",
       start: "top top",
-      end: "+=400%",
-      scrub: true
+      end: "+=350%",          // 3.5 screens pinned before about arrives
+      scrub: true,
+      pin: true,
+      anticipatePin: 1
     }
   });
 
@@ -144,20 +145,6 @@ function sectionReveals() {
         start: "top 88%",
         toggleActions: "play none none none"
       }
-    });
-  });
-}
-
-/* ── stat counters ──────────────────────── */
-function counters() {
-  gsap.utils.toArray(".stat__num").forEach(el => {
-    const target = +el.dataset.count;
-    gsap.fromTo(el, { innerText: 0 }, {
-      innerText: target,
-      duration: 1.8,
-      ease: "power2.out",
-      snap: { innerText: 1 },
-      scrollTrigger: { trigger: el, start: "top 85%" }
     });
   });
 }
