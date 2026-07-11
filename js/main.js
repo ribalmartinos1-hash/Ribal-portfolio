@@ -3,7 +3,16 @@
    GSAP + ScrollTrigger · canvas frame scrubbing
    ═══════════════════════════════════════════════ */
 
-gsap.registerPlugin(ScrollTrigger);
+/* if the animation library somehow failed to load, never leave a black screen:
+   show everything unanimated and bail out of the cinematic engine */
+const HAS_GSAP = typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined";
+if (!HAS_GSAP) {
+  document.body.classList.add("no-anim");
+  const pl = document.getElementById("preloader");
+  if (pl) pl.classList.add("is-done");
+} else {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 /* ── config ─────────────────────────────── */
 const FRAME_COUNT = 192;
@@ -76,9 +85,13 @@ function start() {
   window.addEventListener("resize", sizeCanvas);
   preloader.classList.add("is-done");
 
-  introAnimation();
-  heroScrub();
-  sectionReveals();
+  if (HAS_GSAP) {
+    introAnimation();
+    heroScrub();
+    sectionReveals();
+  } else {
+    render(); // at least show the camera
+  }
 }
 
 /* ── intro: name rises out of its mask ──── */
@@ -185,7 +198,7 @@ if (cursor && window.matchMedia("(hover: hover)").matches) {
 }
 
 /* magnetic pull on tagged elements */
-document.querySelectorAll(".magnetic").forEach(el => {
+if (HAS_GSAP) document.querySelectorAll(".magnetic").forEach(el => {
   el.addEventListener("pointermove", e => {
     const r = el.getBoundingClientRect();
     gsap.to(el, {

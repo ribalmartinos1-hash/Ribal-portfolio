@@ -372,4 +372,103 @@ a { color: inherit; text-decoration: none; }
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   display: flex; flex-direction: column;
-  align-item
+  align-items: center; justify-content: center;
+  gap: 3rem;
+  opacity: 0; visibility: hidden;
+  transition: opacity .45s ease, visibility .45s;
+}
+.menu.is-open { opacity: 1; visibility: visible; }
+.menu__close {
+  position: absolute; top: 1.4rem; right: clamp(1.2rem, 4vw, 3rem);
+  background: none; border: 1px solid #3a3a40; border-radius: 50%;
+  width: 46px; height: 46px;
+  color: var(--ink); font-size: 1rem; cursor: pointer;
+  transition: background .3s, color .3s;
+}
+.menu__close:hover { background: var(--ink); color: var(--bg); }
+.menu__links { display: flex; flex-direction: column; align-items: center; gap: .4rem; }
+.menu__links a {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6.5vw, 4.2rem);
+  line-height: 1.15;
+  text-transform: uppercase;
+  display: flex; align-items: baseline; gap: 1rem;
+  opacity: 0; transform: translateY(26px);
+  transition: opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1), color .25s;
+}
+.menu.is-open .menu__links a { opacity: 1; transform: translateY(0); }
+.menu.is-open .menu__links a:nth-child(1) { transition-delay: .08s; }
+.menu.is-open .menu__links a:nth-child(2) { transition-delay: .14s; }
+.menu.is-open .menu__links a:nth-child(3) { transition-delay: .20s; }
+.menu.is-open .menu__links a:nth-child(4) { transition-delay: .26s; }
+.menu.is-open .menu__links a:nth-child(5) { transition-delay: .32s; }
+.menu.is-open .menu__links a:nth-child(6) { transition-delay: .38s; }
+.menu__links a:hover { color: var(--accent); }
+.menu__links a span {
+  font-family: var(--font-body); font-size: .7rem;
+  color: var(--accent); letter-spacing: .2em;
+}
+.menu__foot { display: flex; gap: 2rem; color: var(--muted); font-size: .8rem; letter-spacing: .15em; text-transform: uppercase; }
+.menu__foot a:hover { color: var(--ink); }
+
+/* ── delivery / client area ────────────── */
+.plain-cursor { cursor: auto; }
+.delivery {
+  min-height: 100vh; min-height: 100svh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 7rem 1.2rem 4rem;
+  background: radial-gradient(ellipse 90% 60% at 50% 115%, rgba(230,51,37,.12), transparent 60%);
+}
+.delivery__eyebrow { color: var(--accent); letter-spacing: .3em; text-transform: uppercase; font-size: .75rem; margin-bottom: 2rem; }
+.delivery__title {
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 13vw, 10rem);
+  line-height: .95;
+}
+.delivery__for { margin-top: 2rem; color: var(--muted); font-size: 1.05rem; }
+.delivery__for em { font-style: normal; color: var(--ink); font-weight: 500; }
+.delivery__btn {
+  display: inline-block; margin-top: 2.6rem;
+  background: var(--accent); color: #fff;
+  font-weight: 500; letter-spacing: .06em;
+  padding: 1.1em 2.6em; border-radius: 99px;
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), background .3s;
+}
+.delivery__btn:hover { transform: translateY(-3px); background: #ff4433; }
+.delivery__hint { margin-top: 2rem; color: var(--muted); font-size: .85rem; max-width: 34em; }
+.delivery__hint a, .delivery__error a { color: var(--ink); text-decoration: underline; }
+.delivery__form { display: flex; gap: .6rem; justify-content: center; margin-top: 2.4rem; flex-wrap: wrap; }
+.delivery__form input {
+  background: rgba(242,240,236,.06);
+  border: 1px solid #3a3a40; border-radius: 99px;
+  color: var(--ink); font-family: var(--font-body);
+  padding: .95em 1.6em; min-width: 240px;
+  letter-spacing: .05em; outline: none;
+  transition: border-color .3s;
+}
+.delivery__form input:focus { border-color: var(--accent); }
+.delivery__form button {
+  background: var(--ink); color: var(--bg);
+  border: none; border-radius: 99px;
+  padding: .95em 1.8em; font-weight: 500; cursor: pointer;
+  transition: background .3s;
+}
+.delivery__form button:hover { background: var(--accent); color: #fff; }
+.delivery__error { margin-top: 1.4rem; color: #ff8a7f; font-size: .9rem; }
+.delivery__back { margin-top: 4.5rem; }
+.delivery__back a { color: var(--muted); font-size: .85rem; letter-spacing: .12em; transition: color .3s; }
+.delivery__back a:hover { color: var(--ink); }
+
+/* ── no-animation fallback (if JS lib blocked) ── */
+.no-anim .reveal { opacity: 1; transform: none; }
+.no-anim .hero__line > span { transform: none; }
+.no-anim .preloader { opacity: 0; visibility: hidden; }
+
+/* ── reduced motion ────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .grain, .hero__scrollbar { animation: none; }
+  .marquee__track { animation-duration: 120s; }
+  html { scroll-behavior: auto; }
+}
